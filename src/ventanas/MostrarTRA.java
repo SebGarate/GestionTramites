@@ -47,6 +47,7 @@ public class MostrarTRA extends javax.swing.JFrame {
         modelo.addColumn("DEPENDENCIA");
         this.jTable1.setModel(modelo);
         mostrartabla(Listadep);
+        jTable1.setDefaultEditor(Object.class, null);
     }
     public void mostrartabla(Lista<dependencias> Listadep){
         Cola<Expediente> aux1 = new Cola();

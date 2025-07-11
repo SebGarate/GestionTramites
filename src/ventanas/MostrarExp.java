@@ -47,6 +47,7 @@ public class MostrarExp extends javax.swing.JFrame {
         modelo.addColumn("TIPO");
         this.jTable1.setModel(modelo);
         mostrartabla(Listaexp);
+        jTable1.setDefaultEditor(Object.class, null);
     }
     public void mostrartabla(Lista<Expediente> Listaexp){
         for (int i =1 ; i <=Listaexp.longitud(); i++) {

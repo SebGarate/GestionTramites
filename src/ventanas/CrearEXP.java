@@ -530,45 +530,135 @@ public class CrearEXP extends javax.swing.JFrame {
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
-        int prioridad =Integer.parseInt(jTextField8.getText());
-        int Dni =Integer.parseInt(jTextField9.getText());
-        String Nombres=jTextField10.getText();
-        int celular =Integer.parseInt(jTextField11.getText());
-        String email=jTextField12.getText();
-        String Asunto=jTextField13.getText();
-        String DocRef=jTextField14.getText();
-        Boolean Interno= false;
-        int id=1;
-        LocalDateTime fecha= LocalDateTime.now();
-        if (!Listaexp.esVacia()){
-            id=Listaexp.getUltimo().getItem().getId()+1;
-        }
-        Expediente exp = new Expediente(id,prioridad,Dni,Nombres,celular,email,Asunto,DocRef,fecha,Interno);
-        Listaexp.agregar(exp);
+        String prioridadText = jTextField8.getText().trim();
+    if (!prioridadText.matches("\\d+")) {
+        JOptionPane.showMessageDialog(this, "La prioridad debe ser un número entero.");
+        return;
+    }
+    int prioridad = Integer.parseInt(prioridadText);
+        
+    String dniText = jTextField9.getText().trim();
+    if (!dniText.matches("\\d{8}")) {
+        JOptionPane.showMessageDialog(this, "El DNI debe tener exactamente 8 dígitos.");
+        return;
+    }
+    int dni = Integer.parseInt(dniText);
+
+    // Validar nombres
+    String nombres = jTextField10.getText().trim();
+    if (nombres.isEmpty()) {
+        JOptionPane.showMessageDialog(this, "El nombre no puede estar vacío.");
+        return;
+    }
+
+    // Validar celular
+    String celularText = jTextField11.getText().trim();
+    if (!celularText.matches("\\d{9}")) {
+        JOptionPane.showMessageDialog(this, "El número de celular debe tener 9 dígitos.");
+        return;
+    }
+    int celular = Integer.parseInt(celularText);
+
+    // Validar email
+    String email = jTextField12.getText().trim();
+    if (!email.matches("^[\\w.-]+@[\\w.-]+\\.[a-zA-Z]{2,}$")) {
+        JOptionPane.showMessageDialog(this, "El email ingresado no es válido.");
+        return;
+    }
+
+    // Validar asunto
+    String asunto = jTextField13.getText().trim();
+    if (asunto.isEmpty()) {
+        JOptionPane.showMessageDialog(this, "El asunto no puede estar vacío.");
+        return;
+    }
+
+    // Validar documento de referencia
+    String docRef = jTextField14.getText().trim();
+    if (docRef.isEmpty()) {
+        JOptionPane.showMessageDialog(this, "El documento de referencia no puede estar vacío.");
+        return;
+    }
+
+    // Si todo está validado, creamos el expediente como siempre
+    Boolean interno = false;
+    int id = 1;
+    LocalDateTime fecha = LocalDateTime.now();
+
+    if (!Listaexp.esVacia()) {
+        id = Listaexp.getUltimo().getItem().getId() + 1;
+    }
+
+    Expediente exp = new Expediente(id,prioridad, dni, nombres, celular, email, asunto, docRef, fecha, interno);
+    Listaexp.agregar(exp);
+    JOptionPane.showMessageDialog(this, "Expediente creado correctamente.");
         
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
+        String prioridadText = jTextField1.getText().trim();
+    if (!prioridadText.matches("\\d+")) {
+        JOptionPane.showMessageDialog(this, "La prioridad debe ser un número entero.");
+        return;
+    }
+    int prioridad = Integer.parseInt(prioridadText);
         
-        
-        int prioridad =Integer.parseInt(jTextField1.getText());
-        int Dni =Integer.parseInt(jTextField2.getText());
-        String Nombres=jTextField3.getText();
-        int celular =Integer.parseInt(jTextField4.getText());
-        String email=jTextField5.getText();
-        String Asunto=jTextField6.getText();
-        String DocRef=jTextField7.getText();
-        Boolean Interno= true;
-        int id=1;
-        LocalDateTime fecha= LocalDateTime.now();
-        if (!Listaexp.esVacia()){
-            id=Listaexp.getUltimo().getItem().getId()+1;
-        }
-        Expediente exp = new Expediente(id,prioridad,Dni,Nombres,celular,email,Asunto,DocRef,fecha,Interno);
-        Listaexp.agregar(exp);
-        
-        
+    String dniText = jTextField2.getText().trim();
+    if (!dniText.matches("\\d{8}")) {
+        JOptionPane.showMessageDialog(this, "El DNI debe tener exactamente 8 dígitos.");
+        return;
+    }
+    int dni = Integer.parseInt(dniText);
+
+    // Validar nombres
+    String nombres = jTextField3.getText().trim();
+    if (nombres.isEmpty()) {
+        JOptionPane.showMessageDialog(this, "El nombre no puede estar vacío.");
+        return;
+    }
+
+    // Validar celular
+    String celularText = jTextField4.getText().trim();
+    if (!celularText.matches("\\d{9}")) {
+        JOptionPane.showMessageDialog(this, "El número de celular debe tener 9 dígitos.");
+        return;
+    }
+    int celular = Integer.parseInt(celularText);
+
+    // Validar email
+    String email = jTextField5.getText().trim();
+    if (!email.matches("^[\\w.-]+@[\\w.-]+\\.[a-zA-Z]{2,}$")) {
+        JOptionPane.showMessageDialog(this, "El email ingresado no es válido.");
+        return;
+    }
+
+    // Validar asunto
+    String asunto = jTextField6.getText().trim();
+    if (asunto.isEmpty()) {
+        JOptionPane.showMessageDialog(this, "El asunto no puede estar vacío.");
+        return;
+    }
+
+    // Validar documento de referencia
+    String docRef = jTextField7.getText().trim();
+    if (docRef.isEmpty()) {
+        JOptionPane.showMessageDialog(this, "El documento de referencia no puede estar vacío.");
+        return;
+    }
+
+    // Si todo está validado, creamos el expediente como siempre
+    Boolean interno = true;
+    int id = 1;
+    LocalDateTime fecha = LocalDateTime.now();
+
+    if (!Listaexp.esVacia()) {
+        id = Listaexp.getUltimo().getItem().getId() + 1;
+    }
+
+    Expediente exp = new Expediente(id,prioridad, dni, nombres, celular, email, asunto, docRef, fecha, interno);
+    Listaexp.agregar(exp);
+    JOptionPane.showMessageDialog(this, "Expediente creado correctamente.");
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jTextField18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField18ActionPerformed

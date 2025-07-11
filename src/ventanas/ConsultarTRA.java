@@ -231,11 +231,14 @@ public class ConsultarTRA extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         int id1= Integer.parseInt(jTextField1.getText());
-        for (int i = 1; i <= Listaexp.longitud(); i++) {
+        if(!Listaexp.esVacia()){
+           for (int i = 1; i <= Listaexp.longitud(); i++) {
             if (id1==Listaexp.iesimo(i).getId()) {
                 JOptionPane.showMessageDialog(this, "El expediente se encuentra actualmente en el departamento : "+Listaexp.iesimo(i).getSeguimiento().getUltimo().getItem().getNombre());
             }
+        } 
         }
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
