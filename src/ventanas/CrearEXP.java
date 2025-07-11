@@ -509,20 +509,42 @@ public class CrearEXP extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "No existe tal documento en registros");
         }
         else {
-        int prioridad =Integer.parseInt(jTextField15.getText());
-        int Dni =Integer.parseInt(jTextField18.getText());
+        String prioridadText = jTextField15.getText().trim();
+    if (!prioridadText.matches("\\d+")) {
+        JOptionPane.showMessageDialog(this, "La prioridad debe ser un número entero.");
+        return;
+    }
+    int prioridad = Integer.parseInt(prioridadText);
+        
+    String dniText = jTextField18.getText().trim();
+    if (!dniText.matches("\\d{8}")) {
+        JOptionPane.showMessageDialog(this, "El DNI debe tener exactamente 8 dígitos.");
+        return;
+    }
+    int dni = Integer.parseInt(dniText);
         String Nombres=aux.getNombres();
         int celular =aux.getCelular();
         String email=aux.getEmail();
-        String Asunto=jTextField16.getText();
-        String DocRef=jTextField17.getText();
+        String asunto = jTextField16.getText().trim();
+    if (asunto.isEmpty()) {
+        JOptionPane.showMessageDialog(this, "El asunto no puede estar vacío.");
+        return;
+    }
+
+    // Validar documento de referencia
+    String docRef = jTextField17.getText().trim();
+    if (docRef.isEmpty()) {
+        JOptionPane.showMessageDialog(this, "El documento de referencia no puede estar vacío.");
+        return;
+    }
+        
         Boolean Interno= aux.getInterno();
         int id=1;
         LocalDateTime fecha= LocalDateTime.now();
         if (!Listaexp.esVacia()){
             id=Listaexp.getUltimo().getItem().getId()+1;
         }
-        Expediente exp = new Expediente(id,prioridad,Dni,Nombres,celular,email,Asunto,DocRef,fecha,Interno);
+        Expediente exp = new Expediente(id,prioridad,dni,Nombres,celular,email,asunto,docRef,fecha,Interno);
         Listaexp.agregar(exp);
         }
         
