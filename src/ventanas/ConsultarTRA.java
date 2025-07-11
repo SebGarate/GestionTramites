@@ -234,6 +234,9 @@ public class ConsultarTRA extends javax.swing.JFrame {
         if(!Listaexp.esVacia()){
            for (int i = 1; i <= Listaexp.longitud(); i++) {
             if (id1==Listaexp.iesimo(i).getId()) {
+                if(Listaexp.iesimo(i).getSeguimiento().esVacia()){
+                   JOptionPane.showMessageDialog(this, "El expediente actualmente no se ha movido a ningun departamento" ); 
+                }
                 JOptionPane.showMessageDialog(this, "El expediente se encuentra actualmente en el departamento : "+Listaexp.iesimo(i).getSeguimiento().getUltimo().getItem().getNombre());
             }
         } 

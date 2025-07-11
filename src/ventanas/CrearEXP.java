@@ -546,6 +546,7 @@ public class CrearEXP extends javax.swing.JFrame {
         }
         Expediente exp = new Expediente(id,prioridad,dni,Nombres,celular,email,asunto,docRef,fecha,Interno);
         Listaexp.agregar(exp);
+        JOptionPane.showMessageDialog(this, "Expediente creado correctamente.");
         }
         
     }//GEN-LAST:event_jButton4ActionPerformed
